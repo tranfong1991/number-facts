@@ -1,0 +1,22 @@
+{
+  "name": "number-facts",
+  "version": "1.0.0",
+  "description": "Alexa skill for random number facts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tranfong1991/number-facts.git"
+  },
+  "author": "Andy Tran",
+  "license": "ISC",
+  "dependencies": {
+    "alexa-sdk": "^1.0.8"
+    },
+  "bugs": {
+    "url": "https://github.com/tranfong1991/number-facts/issues"
+  },
+  "homepage": "https://github.com/tranfong1991/number-facts#readme"
+}

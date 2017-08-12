@@ -1,0 +1,3 @@
+RandomFactIntent {Number}
+RandomFactIntent Number {Number}
+RandomFactIntent Fact for number {Number}
