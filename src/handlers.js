@@ -9,20 +9,23 @@ var handlers = {
 		this.emit(':ask', "Welcome to Number Facts. " + instructionSpeech);
 	},
 	"RandomFactIntent": function(){
-		var number = this.event.request.intent.slots.Number.value;
-
-		var self = this;
-		http.get("http://numbersapi.com/" + number,  function(res){
-			if(res.statusCode !== 200){
+		var number = parseInt(this.event.request.intent.slots.Number.value);
+		if(number){
+			var self = this;
+			http.get("http://numbersapi.com/" + number,  function(res){
+				if(res.statusCode !== 200){
+					self.emit('Unhandled');
+				} else {
+					res.on('data', (d) => {
+						self.emit(":ask", d + ". Please say another number.");
+				  	});
+				}
+			}).on('error', function(e){
 				self.emit('Unhandled');
-			} else {
-				res.on('data', (d) => {
-					self.emit(":ask", d + ". Please say another number.");
-			  	});
-			}
-		}).on('error', function(e){
-			self.emit('Unhandled');
-		});
+			});	
+		} else {
+			this.emit('Unhandled');
+		}
 	},
 	"AMAZON.HelpIntent": function(){
 		this.emit(':ask', instructionSpeech);
